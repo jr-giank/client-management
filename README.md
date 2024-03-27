@@ -10,6 +10,38 @@ Stack Utilizado:
 - Tailwind CSS
 - Git y Github
 
+## ¿Como correr la aplicación?
+
+1. Lo primero que debemos hacer es clonar el repositorio, luego de eso creamos un ambiente virtual con:
+
+```bash
+python -m venv venv
+```
+
+2. Activamos nuestro entorno con en el siguiente comando en linux:
+
+```bash
+source venv/Scripts/activate
+```
+
+3. instalamos las dependencias que se encuentran en el archivo requirements.txt:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Creamos un archivo .env dentro del folder management. Aquí detallamos información sensible como la de la base de datos.
+
+```bash
+SECRET_KEY = ''
+DB_NAME = ''
+DB_USER = ''
+DB_PASSWORD = ''
+DB_HOST = ''
+DB_PORT = ''
+```
+# Funcionalidades
+
 ### 1. Login
 
 En esta pagina es donde los usuarios pueden iniciar sesión. Sino tiene una cuenta puede presional el
