@@ -7,4 +7,9 @@ from . import views as v
 urlpatterns = [
     path('register/', v.registerView, name='register'),
     path('login/', v.loginView, name='login'),
+    
+    path('client/list/', v.client_list, name='client_list'),
+    path('client/create/', v.client_create, name='client_create'),
+    path('client/update/<int:pk>/', v.client_update, name='client_update'),
+    path('client/delete/<int:pk>/', v.client_delete, name='client_delete')
 ]
