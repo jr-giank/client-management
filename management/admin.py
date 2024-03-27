@@ -5,4 +5,3 @@ from django.contrib import admin
 from . import models as m
 
 admin.site.register(m.Addres)
-admin.site.register(m.Company)

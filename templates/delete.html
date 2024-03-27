@@ -1,24 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Registro</title>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
-        <p>¿Estas seguro de eliminar el registro?</p>
+{% extends 'index.html' %}
+{% block title %}
+Eliminar Registros
+{% endblock %}
 
-        <button type="submit">Sí</button>
-        <button type="button" onclick="previousPage()">No</button>
-    </form>
-</body>
+{% block content %}
+<div class="fixed left-0 right-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full">
+    <div class="relative max-w-md px-4">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow">
+            <!-- Modal body -->
+            <form class="p-6 pt-0 text-center" method="post">
+                {% csrf_token %}
 
-<script>
-    function previousPage() {
-      window.history.back();
-    }
-</script>
-    
-</html>
+                <h3 class="mt-5 mb-6 text-lg text-gray-500">¿Está seguro de eliminar el cliente?</h3>
+
+                <div class="items-center p-6 mt-2 rounded-b">
+                    <button type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
+                        Eliminar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

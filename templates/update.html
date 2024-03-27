@@ -1,16 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Registro</title>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+{% extends 'index.html' %}
+{% block title %}Actualizar Registros{% endblock %}
 
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-</html>
+{% block content %} 
+<div class="fixed left-0 right-0 z-50 items-center justify-center overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full" id="edit-user-modal">
+    <div class="relative w-full h-full max-w-2x2 px-4 md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-5 border-b rounded-t">
+                <h3 class="text-xl font-semibold">
+                    Editar Cliente
+                </h3>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-2 gap-6">
+                        {% for field in form %}
+                            <div>
+                                <label for="{{ field.id_for_label }}" class="block mb-2 text-base font-medium text-gray-900">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Address formset -->
+                    <fieldset>
+                        {{ address_formset.management_form }}
+                        {% for form in address_formset %}
+                            <div class="items-center p-6 mt-2 border-t border-gray-200 rounded-b">
+                                {{ form.as_p }}
+                            </div>
+                        {% endfor %}
+                    </fieldset>
+
+                    <!-- Modal footer -->
+                    <div class="items-center p-6 mt-2 border-t border-gray-200 rounded-b">
+                        <button class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-2.5 text-center" type="submit">Editar Cliente</button>
+                        <button onclick="previousPage()" class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center">
+                            No, cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previousPage() {
+      window.history.back();
+    }
+</script>
+{% endblock %}
