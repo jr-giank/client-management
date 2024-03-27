@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Registro</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <p>¿Estas seguro de eliminar el registro?</p>
+
+        <button type="submit">Sí</button>
+        <button type="button" onclick="previousPage()">No</button>
+    </form>
+</body>
+
+<script>
+    function previousPage() {
+      window.history.back();
+    }
+</script>
+    
+</html>

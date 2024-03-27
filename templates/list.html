@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load custom_tags %} 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Registros</title>
+</head>
+<body>
+    <table>
+        <thead>
+            {% for record in records_name %}
+                <th scope="col" class="text-center fs-5">{{ record.verbose_name }}</th>
+            {% endfor %}
+        </thead>
+
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    {% for field in records_name %}
+                        <td scope="col" class="text-center">{{ record|getattr_filter:field.name }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
